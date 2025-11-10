@@ -1,0 +1,99 @@
+=======================================================
+Program Klasifikasi EMNIST Dimulai pada Sun Nov  9 18:22:06 2025
+Log Output: /home/zaky/Documents/KuliahD4/MachineVision/ATS/archive/Results/evaluation_log.txt
+=======================================================
+Memuat dan melakukan sampling data seimbang...
+Total sampel final: 13000 (26 kelas)
+
+---------- FASE: PENYETELAN PARAMETER ----------
+
+[HOG] Ekstraksi fitur: Orient=9, PPC=(8, 8), CPB=(2, 2)...
+Dimensi fitur HOG: (3000, 144)
+Memulai tuning SVM pada fitur HOG default...
+Waktu tuning SVM: 5.19 detik
+Parameter SVM Terbaik (pada HOG default): {'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}
+Skor Validasi Silang Terbaik (SVM): 0.7903
+
+Mencoba beberapa kombinasi HOG umum dengan SVM terbaik...
+Mencoba HOG params: {'orientations': 8, 'ppc': (8, 8), 'cpb': (2, 2)}
+
+[HOG] Ekstraksi fitur: Orient=8, PPC=(8, 8), CPB=(2, 2)...
+Dimensi fitur HOG: (3000, 128)
+Mencoba HOG params: {'orientations': 9, 'ppc': (8, 8), 'cpb': (2, 2)}
+
+[HOG] Ekstraksi fitur: Orient=9, PPC=(8, 8), CPB=(2, 2)...
+Dimensi fitur HOG: (3000, 144)
+Mencoba HOG params: {'orientations': 9, 'ppc': (8, 8), 'cpb': (3, 3)}
+
+[HOG] Ekstraksi fitur: Orient=9, PPC=(8, 8), CPB=(3, 3)...
+Dimensi fitur HOG: (3000, 81)
+ -> Memperbarui Best HOG: {'orientations': 9, 'ppc': (8, 8), 'cpb': (3, 3)}, Score: 0.8067
+Mencoba HOG params: {'orientations': 10, 'ppc': (8, 8), 'cpb': (2, 2)}
+
+[HOG] Ekstraksi fitur: Orient=10, PPC=(8, 8), CPB=(2, 2)...
+Dimensi fitur HOG: (3000, 160)
+Mencoba HOG params: {'orientations': 10, 'ppc': (8, 8), 'cpb': (3, 3)}
+
+[HOG] Ekstraksi fitur: Orient=10, PPC=(8, 8), CPB=(3, 3)...
+Dimensi fitur HOG: (3000, 90)
+ -> Memperbarui Best HOG: {'orientations': 10, 'ppc': (8, 8), 'cpb': (3, 3)}, Score: 0.8070
+
+Parameter Terbaik Secara Keseluruhan:
+ - HOG: {'orientations': 10, 'ppc': (8, 8), 'cpb': (3, 3)}
+ - SVM: {'C': 10, 'gamma': 'scale', 'kernel': 'rbf'}
+ - Skor CV Keseluruhan: 0.8070
+
+[MENGAMBIL ULANG FITUR] Ekstraksi fitur dengan HOG params terbaik...
+
+[HOG] Ekstraksi fitur: Orient=10, PPC=(8, 8), CPB=(3, 3)...
+Dimensi fitur HOG: (13000, 90)
+
+---------- FASE: EVALUASI LOOCV FINAL ----------
+[LOOCV] Memulai evaluasi akhir (Kernel=rbf, C=10)...
+PERINGATAN: LOOCV pada 13000 sampel akan memakan waktu lama!
+
+--- HASIL METRIK LOOCV FINAL ---
+Waktu total komputasi LOOCV: 2.14 jam
+Akurasi LOOCV: 87.78%
+Precision (macro): 0.8783
+F1-Score (macro): 0.8779
+Recall (macro): 0.8778
+
+--- LAPORAN KLASIFIKASI DETAIL ---
+              precision    recall  f1-score   support
+
+           A     0.7921    0.8460    0.8182       500
+           B     0.8574    0.8660    0.8617       500
+           C     0.8777    0.8900    0.8838       500
+           D     0.8994    0.9120    0.9057       500
+           E     0.8839    0.8680    0.8759       500
+           F     0.8920    0.8920    0.8920       500
+           G     0.7505    0.6860    0.7168       500
+           H     0.8961    0.8800    0.8880       500
+           I     0.6879    0.6920    0.6899       500
+           J     0.9115    0.8860    0.8986       500
+           K     0.9420    0.9420    0.9420       500
+           L     0.7184    0.7500    0.7339       500
+           M     0.9378    0.9340    0.9359       500
+           N     0.8704    0.9000    0.8850       500
+           O     0.9130    0.9440    0.9282       500
+           P     0.9296    0.9240    0.9268       500
+           Q     0.7564    0.7640    0.7602       500
+           R     0.8752    0.8980    0.8865       500
+           S     0.9444    0.9520    0.9482       500
+           T     0.9167    0.9020    0.9093       500
+           U     0.8913    0.8860    0.8887       500
+           V     0.9022    0.9040    0.9031       500
+           W     0.9363    0.9120    0.9240       500
+           X     0.9630    0.9360    0.9493       500
+           Y     0.9391    0.8940    0.9160       500
+           Z     0.9507    0.9640    0.9573       500
+
+    accuracy                         0.8778     13000
+   macro avg     0.8783    0.8778    0.8779     13000
+weighted avg     0.8783    0.8778    0.8779     13000
+
+
+[VISUALISASI] Confusion Matrix disimpan ke: /home/zaky/Documents/KuliahD4/MachineVision/ATS/archive/Results/confusion_matrix_hog_svm_rbf.png
+
+--- DONE ---
